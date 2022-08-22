@@ -4,6 +4,7 @@ import { Header } from "./components/Header";
 import { TodoList } from "./components/TodoList";
 
 import styles from "./app.module.css";
+import toast from "react-hot-toast";
 
 interface Todo {
   id: number;
@@ -14,6 +15,8 @@ interface Todo {
 export const App = () => {
   const [todos, setTodos] = useState<Todo[]>([]);
   const [newTodoText, setNewTodoText] = useState("");
+
+  const notify = (content: string) => toast.success(content);
 
   const handleSetNewTodo = (e: ChangeEvent<HTMLInputElement>) => {
     setNewTodoText(e.target.value);
@@ -31,16 +34,23 @@ export const App = () => {
     };
     setTodos([...oldTodos, newTodo]);
     setNewTodoText("");
+    notify("Tarafe criada com sucesso!");
   };
 
-  const deleteTodo = (id: number) =>
+  const deleteTodo = (id: number) => {
     setTodos((state) => state.filter((item) => item.id !== id));
+    notify("Tarefa deletada 🗑️");
+  };
 
   const toCompleteTodo = (id: number, isComplete: boolean) => {
     const oldTodos = [...todos];
     const todoIndex = oldTodos.findIndex((todo) => todo.id === id);
     oldTodos[todoIndex].complete = isComplete;
     setTodos(oldTodos);
+    const notifyContent = isComplete
+      ? "Tarefa concluida com sucesso!"
+      : "Tarefa desmarcada!";
+    notify(notifyContent);
   };
 
   const invalidField = (e: InvalidEvent<HTMLInputElement>) =>

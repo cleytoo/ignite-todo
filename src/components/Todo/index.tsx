@@ -1,5 +1,5 @@
-import { Trash } from "phosphor-react";
 import { ChangeEvent } from "react";
+import { Trash } from "phosphor-react";
 import styles from "./styles.module.css";
 
 interface Todo {
@@ -29,6 +29,7 @@ export const Todo = ({ todo, onDeleteTodo, onCompleteTodo }: TodoProps) => {
         onChange={handleCompleteTodo}
         checked={todo.complete}
       />
+
       <p className={todo.complete ? styles.complete : ""}>{todo.content}</p>
 
       <button title="Deletar todo" onClick={handleDeleteTodo}>
