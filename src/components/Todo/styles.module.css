@@ -1,0 +1,46 @@
+.todo {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+
+  height: 4.5rem;
+  background-color: var(--gray-500);
+  border-radius: 8px;
+  border: 1px solid var(--gray-400);
+  padding: 1rem;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.todo p {
+  font-size: 0.875rem;
+  color: var(--gray-100);
+  line-height: 19.6px;
+}
+
+.todo input[type='checkbox'] {
+  min-height: 1rem;
+  min-width: 1rem;
+  accent-color: var(--purple-dark);
+  cursor: pointer;
+}
+
+
+.todo button {
+  margin-left: auto;
+  background-color: transparent;
+  line-height: 0;
+  border: 0;
+  color: var(--gray-300);
+  cursor: pointer;
+
+  transition: color 0.1s;
+}
+
+.todo button:hover {
+  color: var(--danger);
+}
+
+.todo >  p.complete {
+  text-decoration: line-through;
+  color: var(--gray-300);
+}
